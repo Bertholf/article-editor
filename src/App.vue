@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="row no-gutters">
+      <div class="vh-100 col-auto">
+        <content-group></content-group>
+      </div>
+      <div class="vh-100 border bg-dark col">
+        <page></page>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import './styles/app.scss';
+import ContentGroup from './components/ContentGroup.vue';
+import Page from './components/Page.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    ContentGroup,
+    Page,
   },
 };
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
