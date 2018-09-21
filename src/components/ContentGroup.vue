@@ -9,8 +9,8 @@
     <div class="card rounded-0">
         <div class="card-header"><h1>Content Blocks</h1></div>
         <div class="list-group list-group-flush items-list">
-            <div class="list-group-items p-1 border" v-for="n in 10" :key="n">
-                <content-block-preview></content-block-preview>
+            <div class="list-group-items p-1 border" v-for="block in availableBlocks" :key="block.id">
+                <content-block-preview :preview="block.preview"></content-block-preview>
             </div>
         </div>
     </div>
@@ -24,5 +24,11 @@ export default {
   data() {
     return {};
   },
+    computed: {
+        availableBlocks () {
+            return this.$store.state.availableBlocks
+        }
+    }
+
 };
 </script>
