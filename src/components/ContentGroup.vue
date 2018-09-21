@@ -16,20 +16,24 @@
                 </select>
             </div>
         </div>
-        <div class="list-group list-group-flush items-list">
+        <draggable class="list-group list-group-flush items-list" :options="{clone: true, put:false, sort: false}">
             <div class="list-group-items p-1 border" v-for="block in filteredBlocks" :key="block.id">
                 <content-block-preview :preview="block.preview"></content-block-preview>
             </div>
-        </div>
+        </draggable>
     </div>
 </template>
 
 <script>
 import lodash from 'lodash'
+import draggable from "vuedraggable";
 import ContentBlockPreview from './ContentBlockPreview.vue';
 
 export default {
-  components: { ContentBlockPreview },
+  components: {
+      ContentBlockPreview,
+      draggable
+  },
   data() {
     return {
         selectedCategory: ''
