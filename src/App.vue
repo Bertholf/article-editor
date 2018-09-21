@@ -1,14 +1,26 @@
 <template>
-  <div id="app">
-    <div class="row no-gutters">
-      <div class="vh-100 col-auto">
-        <content-group></content-group>
-      </div>
-      <div class="vh-100 border bg-dark col">
-        <page></page>
-      </div>
+    <div id="app">
+        <div class="navbar">
+
+            <div class="d-inline-block mr-auto">
+                <button class="btn btn-success" @click="toggleBlocks">
+                    <fa-icon icon="bars"></fa-icon>
+                </button>
+            </div>
+            <div class="d-inline-block ml-auto">
+                <button class="btn btn-success" @click="exportHtml">Export</button>
+
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="vh-100 col-auto" v-if="showBlocks">
+                <content-group></content-group>
+            </div>
+            <div class="vh-100 border bg-light col" @click="showBlocks = false">
+                <page></page>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -21,6 +33,19 @@ export default {
   components: {
     ContentGroup,
     Page,
+  },
+  data() {
+    return {
+      showBlocks: false,
+    };
+  },
+  methods: {
+    toggleBlocks() {
+      this.showBlocks = !this.showBlocks;
+    },
+    exportHtml() {
+
+    },
   },
 };
 </script>
