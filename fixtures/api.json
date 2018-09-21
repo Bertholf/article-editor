@@ -1,0 +1,17 @@
+{
+  "content-blocks" : [
+    {"id": 1,
+      "name": "jumbotron",
+      "categogy": "",
+      "preview": "jumbotron-preview-img.png",
+      "html": "<div><h1>Jumbotron</h1><p>Get actual format from getbootstrap.com</p></div>"
+    },
+    {
+      "id": 1,
+      "name": "jumbotron",
+      "categogy": "",
+      "preview": "jumbotron-preview-img.png",
+      "html": "<div><h1>Jumbotron</h1><p>Get actual format from getbootstrap.com</p></div>"
+    }
+  ]
+}
