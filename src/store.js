@@ -14,13 +14,15 @@ export default new Vuex.Store({
 
     getters: {
         availableCategories: state => {
-            return lodash.map(
+            let categories =  lodash.map(
                 lodash.uniqBy(state.availableBlocks, 'category'), function (block) {
                     return{
                         value: block.category,
                         title: block.category.toUpperCase()
                     }
                 });
+
+            return lodash.concat({value: "all", title: "All"}, categories);
         }
     },
   mutations: {
