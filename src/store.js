@@ -6,12 +6,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     availableBlocks: {
-      jumbotron: {},
+
     },
     loadedPage: {
       blocks: [],
     },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+      getContentBlocks (state, contentBlocks) {
+          state.availableBlocks = contentBlocks;
+      }
+  },
+  actions: {
+      getContentBlocks (context, contentBlocks) {
+          context.commit('getContentBlocks', contentBlocks)
+      }
+  },
 });
