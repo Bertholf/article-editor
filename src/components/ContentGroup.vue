@@ -27,7 +27,7 @@ export default {
     computed: {
         availableBlocks () {
             return this.$store.state.availableBlocks
-        }
+        },
     }
 
 };
