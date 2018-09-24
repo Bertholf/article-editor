@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import lodash from 'lodash'
+import _ from 'lodash'
 import ContentBlockPreview from './ContentBlockPreview.vue';
 
 export default {
@@ -46,7 +46,7 @@ export default {
             if (this.selectedCategory === '' || this.selectedCategory === 'all'){
                 return this.availableBlocks;
             }
-            return lodash.filter(this.availableBlocks, {category: this.selectedCategory});
+            return _.filter(this.availableBlocks, {category: this.selectedCategory});
         },
     }
 
