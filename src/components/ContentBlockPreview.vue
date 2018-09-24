@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="preview" alt="">
+        <img :src="block.preview" alt="">
     </div>
 </template>
 
@@ -9,6 +9,6 @@ export default {
   data() {
     return {};
   },
-    props: ['preview'],
+    props: ['block'],
 };
 </script>

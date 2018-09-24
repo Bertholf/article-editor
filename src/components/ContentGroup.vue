@@ -18,7 +18,7 @@
         </div>
         <div class="list-group list-group-flush items-list">
             <div class="list-group-items p-1 border" v-for="block in filteredBlocks" :key="block.id">
-                <content-block-preview :preview="block.preview"></content-block-preview>
+                <content-block-preview :block="block"></content-block-preview>
             </div>
         </div>
     </div>
