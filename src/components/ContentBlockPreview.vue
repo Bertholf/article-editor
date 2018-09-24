@@ -9,6 +9,6 @@ export default {
   data() {
     return {};
   },
-    props: ['block'],
+  props: ['block'],
 };
 </script>

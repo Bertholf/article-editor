@@ -8,26 +8,27 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
+import draggable from 'vuedraggable';
+
 export default {
   data() {
     return {
 
-    }
+    };
   },
-    components: {
-        draggable
-    },
+  components: {
+    draggable,
+  },
 
-    computed: {
-        loadedBlocks: {
-            get: function () {
-                return this.$store.state.loadedPage.blocks;
-            },
-            set: function (newValue) {
-                this.$store.commit('setLoadedBlocks', newValue)
-            }
-        }
-    }
+  computed: {
+    loadedBlocks: {
+      get() {
+        return this.$store.state.loadedPage.blocks;
+      },
+      set(newValue) {
+        this.$store.commit('setLoadedBlocks', newValue);
+      },
+    },
+  },
 };
 </script>
