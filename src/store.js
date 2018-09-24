@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import lodash from 'lodash'
+import http from './mixins/http'
 
 Vue.use(Vuex);
 
@@ -31,8 +32,15 @@ export default new Vuex.Store({
       }
   },
   actions: {
-      getContentBlocks (context, contentBlocks) {
-          context.commit('getContentBlocks', contentBlocks)
+      getContentBlocks (context) {
+          http.methods.get('content-blocks').then(
+              data => {
+                  context.commit('getContentBlocks', data)
+              },
+              error => {
+                  console.log(error);
+              }
+          );
       },
   },
 });
