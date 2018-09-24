@@ -43,7 +43,7 @@ export default {
             return this.$store.getters.availableCategories
         },
         filteredBlocks () {
-            if (this.selectedCategory === '' || this.selectedCategory === 'all'){
+            if (this.selectedCategory === ''){
                 return this.availableBlocks;
             }
             return _.filter(this.availableBlocks, {category: this.selectedCategory});

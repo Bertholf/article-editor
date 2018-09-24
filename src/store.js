@@ -16,14 +16,14 @@ export default new Vuex.Store({
     getters: {
         availableCategories: state => {
             let categories =  lodash.map(
-                lodash.uniqBy(state.availableBlocks, 'category'), function (block) {
+                lodash.uniqBy(state.availableBlocks, 'category'), (block) => {
                     return{
                         value: block.category,
                         title: block.category.toUpperCase()
                     }
                 });
 
-            return lodash.concat({value: "all", title: "All"}, categories);
+            return lodash.concat({value: '', title: "All"}, categories);
         }
     },
   mutations: {
