@@ -10,8 +10,11 @@ export default new Vuex.Store({
     availableBlocks: [],
     loadedPage: {
       blocks: [{
-          html: "test html"
-      }],
+          "id": 0,
+          "name": "testElement",
+          "category": "alerts",
+          "html": "<div>Span element</div>"
+      },],
     },
   },
 
