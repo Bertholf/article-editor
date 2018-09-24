@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import lodash from 'lodash'
+import _ from 'lodash'
 import http from './mixins/http'
 
 Vue.use(Vuex);
@@ -15,15 +15,13 @@ export default new Vuex.Store({
 
     getters: {
         availableCategories: state => {
-            let categories =  lodash.map(
-                lodash.uniqBy(state.availableBlocks, 'category'), (block) => {
+            return _.map(
+                _.uniqBy(state.availableBlocks, 'category'), (block) => {
                     return{
                         value: block.category,
                         title: block.category.toUpperCase()
                     }
                 });
-
-            return lodash.concat({value: '', title: "All"}, categories);
         }
     },
   mutations: {

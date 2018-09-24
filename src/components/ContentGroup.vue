@@ -12,6 +12,7 @@
             <div class="form-group">
                 <label for="categories">Categories</label>
                 <select class="form-control" id="categories" v-model="selectedCategory">
+                    <option :value="''">All</option>
                     <option v-for="category in allCategories" :value="category.value" :key="category.value">{{ category.title }}</option>
                 </select>
             </div>
