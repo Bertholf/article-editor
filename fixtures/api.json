@@ -9,17 +9,17 @@
     },
     {
       "id": 2,
-      "name": "jumbotron",
+      "name": "card",
       "category": "content",
       "preview": "https://via.placeholder.com/350x150",
-      "html": "<div><h1>Jumbotron</h1><p>Get actual format from getbootstrap.com</p></div>"
+      "html": "<div class='card' style='width: 18rem;'><img class='card-img-top' src='https://via.placeholder.com/350x150' alt='Card image cap'><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div></div>"
     },
     {
       "id": 3,
-      "name": "jumbotron",
+      "name": "Nav",
       "category": "drop-downs",
       "preview": "https://via.placeholder.com/350x150",
-      "html": "<div><h1>Jumbotron</h1><p>Get actual format from getbootstrap.com</p></div>"
+      "html": "<ul class='nav'><li class='nav-item'><a class='nav-link active' href='#'>Active</a></li><li class='nav-item'><a class='nav-link' href='#'>Link</a></li><li class='nav-item'><a class='nav-link' href='#'>Link</a></li><li class='nav-item'><a class='nav-link disabled' href='#'>Disabled</a></li></ul>"
     },
     {
       "id": 4,
