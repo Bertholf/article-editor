@@ -16,9 +16,9 @@
                 </select>
             </div>
         </div>
-        <draggable class="list-group list-group-flush items-list" :options="{clone: true, put:false, sort: false}">
-            <div class="list-group-items p-1 border" v-for="block in filteredBlocks" :key="block.id">
-                <content-block-preview :preview="block.preview"></content-block-preview>
+        <draggable v-model="filteredBlocks" class="dragArea" :options="{group:{ name:'people',  pull:'clone', put:false }}">
+            <div v-for="(element, index) in filteredBlocks" :key="index">
+                <ContentBlockPreview :block="element" class="my-1"></ContentBlockPreview>
             </div>
         </draggable>
     </div>
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-        selectedCategory: ''
+        selectedCategory: '',
     };
   },
     computed: {
@@ -48,8 +48,10 @@ export default {
         },
         filteredBlocks () {
             if (this.selectedCategory === '' || this.selectedCategory === 'all'){
+                this.$store.commit('setFilteredBlocks', this.availableBlocks);
                 return this.availableBlocks;
             }
+            this.$store.commit('setFilteredBlocks', lodash.filter(this.availableBlocks, {category: this.selectedCategory}));
             return lodash.filter(this.availableBlocks, {category: this.selectedCategory});
         },
     }

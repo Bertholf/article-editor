@@ -1,10 +1,8 @@
 <template>
     <div>
         <h1>Page</h1>
-        <draggable class="list-group list-group-flush items-list" :drop="blockAdded" v-model="blocks" :options="{clone: true, put:false, sort: true, onClone: clone}">
-            <div class="list-group-items p-1 border" v-for="block in blocks" :key="block.id">
-                <h1>Some element</h1>
-            </div>
+        <draggable v-model="loadedBlocks" class="dragArea" :options="{group:'people'}">
+            <div v-for="(element, index) in loadedBlocks" :key="index" v-html="element.html"></div>
         </draggable>
     </div>
 </template>
@@ -14,18 +12,21 @@ import draggable from "vuedraggable";
 export default {
   data() {
     return {
-        blocks: [1, 2, 3]
-    };
+
+    }
   },
     components: {
         draggable
     },
-    methods: {
-      blockAdded: function (e) {
-          console.log("element added");
-      },
-        clone: function () {
-            console.log("element added");
+
+    computed: {
+        loadedBlocks: {
+            get: function () {
+                return this.$store.state.loadedPage.blocks;
+            },
+            set: function (newValue) {
+                this.$store.commit('setLoadedBlocks', newValue)
+            }
         }
     }
 };
