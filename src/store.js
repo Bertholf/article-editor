@@ -6,19 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-      listOne:[{
-          name: "John"
-      }, {
-          name: "Joao"
-      }, {
-          name: "Jean"
-      }],
-      listTwo:[{
-          name: "Jean"
-      }],
       filteredBlocks: [],
     availableBlocks: [],
-      LoadedBlocks: [],
     loadedPage: {
       blocks: [{
           html: "test html"
@@ -45,9 +34,6 @@ export default new Vuex.Store({
       },
       setAvailableBlocks ( state, blocks) {
           state.availableBlocks = blocks;
-      },
-      setListTwo (state, items) {
-          state.listTwo = items
       },
       setLoadedBlocks (state, blocks) {
           state.loadedPage.blocks = blocks
