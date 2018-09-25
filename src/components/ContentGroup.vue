@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import lodash from 'lodash';
+import _ from 'lodash';
 import draggable from 'vuedraggable';
 import ContentBlockPreview from './ContentBlockPreview.vue';
 
@@ -54,8 +54,8 @@ export default {
         this.$store.commit('setFilteredBlocks', this.availableBlocks);
         return this.availableBlocks;
       }
-      this.$store.commit('setFilteredBlocks', lodash.filter(this.availableBlocks, { category: this.selectedCategory }));
-      return lodash.filter(this.availableBlocks, { category: this.selectedCategory });
+      this.$store.commit('setFilteredBlocks', _.filter(this.availableBlocks, { category: this.selectedCategory }));
+      return _.filter(this.availableBlocks, { category: this.selectedCategory });
     },
   },
 

@@ -27,7 +27,6 @@
 import './styles/app.scss';
 import ContentGroup from './components/ContentGroup.vue';
 import Page from './components/Page.vue';
-import http from './mixins/http';
 
 export default {
   name: 'app',
@@ -45,30 +44,9 @@ export default {
   },
 
   created() {
-    this.get('header-block').then(
-      (data) => {
-        this.$store.commit('getHeaderBlock', data);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-    this.get('footer-block').then(
-      (data) => {
-        this.$store.commit('getFooterBlock', data);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
-    this.get('content-blocks').then(
-      (data) => {
-        this.$store.dispatch('getContentBlocks', data);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.$store.dispatch('getContentBlocks');
+    this.$store.dispatch('getHTMLHeaderBlock');
+    this.$store.dispatch('getHTMLFooterBlock');
   },
 
   computed: {

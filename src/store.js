@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import lodash from 'lodash';
+import _ from 'lodash';
+import api from './client';
 
 Vue.use(Vuex);
 
@@ -22,22 +23,22 @@ export default new Vuex.Store({
 
   getters: {
     availableCategories: (state) => {
-      const categories = lodash.map(lodash.uniqBy(state.availableBlocks, 'category'), block => ({
+      const categories = _.map(_.uniqBy(state.availableBlocks, 'category'), block => ({
         value: block.category,
         title: block.category.toUpperCase(),
       }));
 
-      return lodash.concat({ value: 'all', title: 'All' }, categories);
+      return _.concat({ value: 'all', title: 'All' }, categories);
     },
   },
   mutations: {
-    getContentBlocks(state, contentBlocks) {
+    setContentBlocks(state, contentBlocks) {
       state.availableBlocks = contentBlocks;
     },
-    getHeaderBlock(state, headerBlock) {
+    setHeaderBlock(state, headerBlock) {
       state.headerBlock = headerBlock;
     },
-    getFooterBlock(state, footerBlock) {
+    setFooterBlock(state, footerBlock) {
       state.footerBlock = footerBlock;
     },
     setAvailableBlocks(state, blocks) {
@@ -51,8 +52,35 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getContentBlocks(context, contentBlocks) {
-      context.commit('getContentBlocks', contentBlocks);
+    getContentBlocks(context) {
+      api.methods.get('content-blocks').then(
+        (data) => {
+          context.commit('setContentBlocks', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    getHTMLHeaderBlock(context) {
+      api.methods.get('header-block').then(
+        (data) => {
+          context.commit('setHeaderBlock', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    getHTMLFooterBlock(context) {
+      api.methods.get('footer-block').then(
+        (data) => {
+          context.commit('setFooterBlock', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
     },
   },
 });
