@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
 .vh-100 {
-  height: 100vh;
+  height: calc(100vh - 55px);
   overflow: auto;
+}
+
+.dropzone{
+  min-height: 250px;
+  background: #dfdfdf;
 }
