@@ -35,8 +35,6 @@ export default {
     Page,
   },
 
-  mixins: [http],
-
   data() {
     return {
       showBlocks: false,
