@@ -27,6 +27,7 @@
 import './styles/app.scss';
 import ContentGroup from './components/ContentGroup.vue';
 import Page from './components/Page.vue';
+import http from './mixins/http'
 
 export default {
   name: 'app',
@@ -34,11 +35,19 @@ export default {
     ContentGroup,
     Page,
   },
+
+    mixins: [http],
+
   data() {
     return {
       showBlocks: false,
     };
   },
+
+    created() {
+        this.$store.dispatch('getContentBlocks');
+    },
+
   methods: {
     toggleBlocks() {
       this.showBlocks = !this.showBlocks;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="http://placehold.it/300x200" alt="">
+        <img :src="block.preview" alt="">
     </div>
 </template>
 
@@ -9,5 +9,6 @@ export default {
   data() {
     return {};
   },
+    props: ['block'],
 };
 </script>
