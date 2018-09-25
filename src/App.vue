@@ -45,14 +45,7 @@ export default {
   },
 
     created() {
-      this.get('content-blocks').then(
-          data => {
-              this.$store.dispatch('getContentBlocks', data);
-          },
-          error => {
-              console.log(error);
-          }
-      )
+        this.$store.dispatch('getContentBlocks');
     },
 
   methods: {
