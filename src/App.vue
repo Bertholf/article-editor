@@ -34,9 +34,6 @@ export default {
     ContentGroup,
     Page,
   },
-
-  mixins: [http],
-
   data() {
     return {
       showBlocks: false,
