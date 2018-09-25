@@ -19,3 +19,10 @@ npm run build
 ```
 npm run lint
 ```
+
+
+### Run mock server
+
+```
+npm run mock
+```
