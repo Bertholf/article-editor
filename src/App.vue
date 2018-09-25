@@ -27,7 +27,6 @@
 import './styles/app.scss';
 import ContentGroup from './components/ContentGroup.vue';
 import Page from './components/Page.vue';
-import http from './mixins/http'
 
 export default {
   name: 'app',
@@ -36,7 +35,7 @@ export default {
     Page,
   },
 
-    mixins: [http],
+  mixins: [http],
 
   data() {
     return {
@@ -44,16 +43,44 @@ export default {
     };
   },
 
-    created() {
-        this.$store.dispatch('getContentBlocks');
+  created() {
+    this.$store.dispatch('getContentBlocks');
+    this.$store.dispatch('getHTMLHeaderBlock');
+    this.$store.dispatch('getHTMLFooterBlock');
+  },
+
+  computed: {
+    loadedPageBlocks() {
+      return this.$store.state.loadedPage.blocks;
     },
+  },
 
   methods: {
     toggleBlocks() {
       this.showBlocks = !this.showBlocks;
     },
     exportHtml() {
+      let text = this.$store.state.headerBlock.html;
 
+      this.loadedPageBlocks.forEach((block) => {
+        if (block.id !== 0) {
+          text += block.html;
+        }
+      });
+
+      text += this.$store.state.footerBlock.html;
+
+
+      const element = document.createElement('a');
+      element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+      element.setAttribute('download', 'export.html');
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
     },
   },
 };

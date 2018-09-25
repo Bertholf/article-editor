@@ -1,59 +1,86 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import _ from 'lodash'
-import http from './mixins/http'
+import _ from 'lodash';
+import api from './client';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-      filteredBlocks: [],
+    footerBlock: {},
+    headerBlock: {},
+    filteredBlocks: [],
     availableBlocks: [],
     loadedPage: {
       blocks: [{
-          "id": 0,
-          "name": "testElement",
-          "category": "alerts",
-          "html": "<div>Span element</div>"
-      },],
+        id: 0,
+        name: 'testElement',
+        category: 'alerts',
+        html: '<div>Span element</div>',
+      }],
     },
   },
 
-    getters: {
-        availableCategories: state => {
-            return _.map(
-                _.uniqBy(state.availableBlocks, 'category'), (block) => {
-                    return{
-                        value: block.category,
-                        title: block.category.toUpperCase()
-                    }
-                });
-        }
+  getters: {
+    availableCategories: (state) => {
+      const categories = _.map(_.uniqBy(state.availableBlocks, 'category'), block => ({
+        value: block.category,
+        title: block.category.toUpperCase(),
+      }));
+
+      return _.concat({ value: 'all', title: 'All' }, categories);
     },
+  },
   mutations: {
-      getContentBlocks (state, contentBlocks) {
-          state.availableBlocks = contentBlocks;
-      },
-      setAvailableBlocks ( state, blocks) {
-          state.availableBlocks = blocks;
-      },
-      setLoadedBlocks (state, blocks) {
-          state.loadedPage.blocks = blocks
-      },
-      setFilteredBlocks ( state, blocks) {
-          state.filteredBlocks = blocks
-      }
+    setContentBlocks(state, contentBlocks) {
+      state.availableBlocks = contentBlocks;
+    },
+    setHeaderBlock(state, headerBlock) {
+      state.headerBlock = headerBlock;
+    },
+    setFooterBlock(state, footerBlock) {
+      state.footerBlock = footerBlock;
+    },
+    setAvailableBlocks(state, blocks) {
+      state.availableBlocks = blocks;
+    },
+    setLoadedBlocks(state, blocks) {
+      state.loadedPage.blocks = blocks;
+    },
+    setFilteredBlocks(state, blocks) {
+      state.filteredBlocks = blocks;
+    },
   },
   actions: {
-      getContentBlocks (context) {
-          http.methods.get('content-blocks').then(
-              data => {
-                  context.commit('getContentBlocks', data)
-              },
-              error => {
-                  console.log(error);
-              }
-          );
-      },
+    getContentBlocks(context) {
+      api.methods.get('content-blocks').then(
+        (data) => {
+          context.commit('setContentBlocks', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    getHTMLHeaderBlock(context) {
+      api.methods.get('header-block').then(
+        (data) => {
+          context.commit('setHeaderBlock', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+    getHTMLFooterBlock(context) {
+      api.methods.get('footer-block').then(
+        (data) => {
+          context.commit('setFooterBlock', data);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
   },
 });

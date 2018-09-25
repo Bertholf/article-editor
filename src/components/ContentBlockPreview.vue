@@ -5,10 +5,10 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {};
-        },
-        props: ['block'],
-    };
+export default {
+  data() {
+    return {};
+  },
+  props: ['block'],
+};
 </script>
