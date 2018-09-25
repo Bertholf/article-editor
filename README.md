@@ -1,4 +1,4 @@
-# app
+# article editor
 
 ## Project setup
 ```
