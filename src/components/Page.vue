@@ -2,7 +2,8 @@
     <div>
         <h1>Page</h1>
         <draggable v-model="loadedBlocks" class="dragArea" :options="{group:'people'}">
-            <div v-for="(element, index) in loadedBlocks" :key="index" v-html="element.html"></div>
+            <div @mouseover="mouseOver(element)" v-for="(element, index) in loadedBlocks" :key="index" v-html="element.html">
+            </div>
         </draggable>
     </div>
 </template>
@@ -30,5 +31,11 @@ export default {
       },
     },
   },
+
+    methods: {
+        mouseOver: function (element) {
+            console.log(element)
+        }
+    }
 };
 </script>
