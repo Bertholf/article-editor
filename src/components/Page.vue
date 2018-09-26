@@ -1,15 +1,18 @@
 <template>
     <div>
         <h1>Page</h1>
-        <draggable v-model="loadedBlocks" class="dragArea" :options="{group:'people'}">
-            <div @mouseover="mouseOver(element)" v-for="(element, index) in loadedBlocks" :key="index" v-html="element.html">
-            </div>
+        <draggable v-model="loadedBlocks" class="dragArea" :options="{group:'people'}" @add="added">
+            <block-component v-for="(element, index) in loadedBlocks" :key="index" :template="element.html" :variables="element.variables"></block-component>
+
+            <!--<div @mouseover="mouseOver(element)"  v-html="element.html">-->
+            <!--</div>-->
         </draggable>
     </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable';
+import blockComponent from './BlockComponent'
 
 export default {
   data() {
@@ -19,6 +22,7 @@ export default {
   },
   components: {
     draggable,
+      'block-component': blockComponent
   },
 
   computed: {
@@ -34,7 +38,10 @@ export default {
 
     methods: {
         mouseOver: function (element) {
-            console.log(element)
+            //console.log(element)
+        },
+        added: function () {
+            console.log("Added")
         }
     }
 };
