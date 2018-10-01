@@ -1,4 +1,4 @@
-# app
+# article editor
 
 ## Project setup
 ```
@@ -18,4 +18,11 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+
+### Run mock server
+
+```
+npm run mock
 ```

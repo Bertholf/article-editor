@@ -21,7 +21,7 @@ export default new Vuex.Store({
     availableCategories: (state) => {
       const categories = _.map(_.uniqBy(state.availableBlocks, 'category'), block => ({
         value: block.category,
-        title: block.category.toUpperCase(),
+        title: _.capitalize(block.category),
       }));
 
       return _.concat({ value: 'all', title: 'All' }, categories);
