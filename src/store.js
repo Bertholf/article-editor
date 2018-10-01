@@ -46,11 +46,14 @@ export default new Vuex.Store({
     setFilteredBlocks(state, blocks) {
       state.filteredBlocks = blocks;
     },
-    setBlockVariableValues(state, {index, variables}){
-      _.each(variables, (value, key) =>{
+    setBlockVariableValues(state, { index, variables }) {
+      _.each(variables, (value, key) => {
         _.set(state.loadedPage.blocks[index], `variables.${key}.value`, value);
       });
-    }
+    },
+    setBlockVariableHtml(state, { index, html }) {
+        _.set(state.loadedPage.blocks[index], 'html', html);
+    },
   },
   actions: {
     getContentBlocks(context) {

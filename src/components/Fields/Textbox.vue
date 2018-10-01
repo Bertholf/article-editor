@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  export default {
-    data(){
-      return {}
-    },
-    props: {
-      control: {},
-      value: {},
-    },
-  }
+export default {
+  data() {
+    return {};
+  },
+  props: {
+    control: {},
+    value: {},
+  },
+};
 </script>

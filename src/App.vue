@@ -24,11 +24,11 @@
 
 <script>
 
-  import './styles/app.scss';
-  import ContentGroup from './components/ContentGroup.vue';
-  import Page from './components/Page.vue';
+import './styles/app.scss';
+import ContentGroup from './components/ContentGroup.vue';
+import Page from './components/Page.vue';
 
-  export default {
+export default {
   name: 'app',
   components: {
     ContentGroup,
@@ -47,20 +47,13 @@
     this.$store.dispatch('getHTMLHeaderBlock');
     this.$store.dispatch('getHTMLFooterBlock');
   },
-
-  computed: {
-    loadedPageBlocks() {
-      return this.$store.state.loadedPage.blocks;
-    },
-  },
-
   methods: {
     toggleBlocks() {
       this.showBlocks = !this.showBlocks;
     },
     exportHtml() {
       let text = this.$store.state.headerBlock.html;
-      text += this.$refs.page.$el.outerHTML
+      text += this.$refs.page.$el.outerHTML;
       text += this.$store.state.footerBlock.html;
 
       const element = document.createElement('a');
