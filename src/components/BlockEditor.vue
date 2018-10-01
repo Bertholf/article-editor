@@ -26,45 +26,45 @@
 </template>
 
 <script>
+import _ from 'lodash';
+import Textbox from './Fields/Textbox.vue';
+import ColorPicker from './Fields/ColorPicker.vue';
 
-  import Textbox from './Fields/Textbox';
-  import ColorPicker from './Fields/ColorPicker.vue';
-
-  export default {
-    components: {Textbox, ColorPicker},
-    computed: {
-      visibleOptions(){
-        return _.pickBy(this.options, {category: this.selectedCategory});
-      }
+export default {
+  components: { Textbox, ColorPicker },
+  computed: {
+    visibleOptions() {
+      return _.pickBy(this.options, { category: this.selectedCategory });
     },
-    data(){
-      return {
-        values: {},
-        selectedCategory: 'content'
-      };
+  },
+  data() {
+    return {
+      values: {},
+      selectedCategory: 'content',
+    };
+  },
+  methods: {
+    submit() {
+      console.log(this.values);
+      this.$emit('save', this.values);
     },
-    methods: {
-      submit(){
-        console.log(this.values);
-        this.$emit('save', this.values);
+    cancel() {
+      this.$emit('close');
+    },
+  },
+  props: {
+    options: {},
+    variables: {},
+  },
+  watch: {
+    variables: {
+      deep: true,
+      immediate: true,
+      handler(newValue) {
+        console.log(newValue);
+        this.values = _.cloneDeep(newValue);
       },
-      cancel(){
-        this.$emit('close');
-      },
     },
-    props: {
-      options: {},
-      variables: {},
-    },
-    watch: {
-      variables: {
-        deep: true,
-        immediate: true,
-        handler(newValue){
-          console.log(newValue);
-          this.values = _.cloneDeep(newValue);
-        },
-    },
-    },
-  };
+  },
+};
 </script>

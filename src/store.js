@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 import Vue from 'vue';
 import Vuex from 'vuex';
 import _ from 'lodash';
@@ -52,7 +53,7 @@ export default new Vuex.Store({
       });
     },
     setBlockVariableHtml(state, { index, html }) {
-        _.set(state.loadedPage.blocks[index], 'html', html);
+      _.set(state.loadedPage.blocks[index], 'html', html);
     },
   },
   actions: {

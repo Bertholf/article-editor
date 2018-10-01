@@ -14,40 +14,30 @@
 
 <script>
 
-  import Textbox from './Fields/Textbox';
-  import ColorPicker from './Fields/ColorPicker.vue';
-
-  export default {
-    components: {Textbox, ColorPicker},
-    computed: {
-      visibleOptions(){
-        return _.pickBy(this.options, {category: this.selectedCategory});
-      }
+export default {
+  data() {
+    return {
+      code: {},
+    };
+  },
+  methods: {
+    submit() {
+      this.$emit('save', this.code);
     },
-    data(){
-      return {
-        code: {},
-        selectedCategory: 'content'
-      };
+    cancel() {
+      this.$emit('close');
     },
-    methods: {
-      submit(){
-        this.$emit('save', this.code);
+  },
+  props: {
+    value: {},
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler(code) {
+        this.code = code;
       },
-      cancel(){
-        this.$emit('close');
-      },
     },
-    props: {
-      value: {},
-    },
-    watch: {
-      value: {
-        immediate: true,
-        handler(code){
-          this.code = code;
-        },
-    },
-    },
-  };
+  },
+};
 </script>

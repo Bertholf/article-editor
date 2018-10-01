@@ -8,13 +8,13 @@
 </template>
 
 <script>
-  import VueColor from 'vue-color/src/components/Sketch'
+import VueColor from 'vue-color/src/components/Sketch.vue';
 
-  export default {
-    components: {VueColor},
-    props: {
-      control: {},
-      value: {},
-    },
-  };
+export default {
+  components: { VueColor },
+  props: {
+    control: {},
+    value: {},
+  },
+};
 </script>

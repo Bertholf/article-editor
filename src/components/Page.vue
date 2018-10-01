@@ -9,12 +9,12 @@
 
 <script>
 import draggable from 'vuedraggable';
-import blockViewer from './BlockViewer';
+import blockViewer from './BlockViewer.vue';
 
 export default {
   data() {
     return {
-editing: false
+      editing: false,
     };
   },
   components: {
