@@ -6,6 +6,7 @@ import api from './client';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     footerBlock: {},
     headerBlock: {},
@@ -45,6 +46,11 @@ export default new Vuex.Store({
     setFilteredBlocks(state, blocks) {
       state.filteredBlocks = blocks;
     },
+    setBlockVariableValues(state, {index, variables}){
+      _.each(variables, (value, key) =>{
+        _.set(state.loadedPage.blocks[index], `variables.${key}.value`, value);
+      });
+    }
   },
   actions: {
     getContentBlocks(context) {

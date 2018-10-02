@@ -1,15 +1,17 @@
 <template>
     <div>
-        <draggable v-model="loadedBlocks" class="dropzone" :options="{group:'people'}">
-            <div v-for="(element, index) in loadedBlocks" :key="index" v-html="element.html"></div>
+        <draggable v-model="loadedBlocks" class="dragArea dropzone" :options="{group:'people'}">
+            <block-viewer v-for="(block, index) in loadedBlocks" :key="index" :index="index" :block="block"
+                   @editing="e => $emit('editing', e)"></block-viewer>
         </draggable>
     </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable';
+  import draggable from 'vuedraggable';
+  import blockViewer from './BlockViewer';
 
-export default {
+  export default {
   data() {
     return {
 
@@ -17,6 +19,7 @@ export default {
   },
   components: {
     draggable,
+    blockViewer,
   },
 
   computed: {
