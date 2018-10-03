@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       dropzoneOptions: {
-        url: 'https://httpbin.org/post',
+        url: 'http://127.0.0.1:1337/uploadHere',
         maxFiles: 1,
         thumbnailWidth: 200,
         addRemoveLinks: true,
@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     fileUploaded(file, response) {
+      console.log(response);
       this.$emit('input', response.files.file);
     },
   },

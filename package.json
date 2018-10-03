@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "mock": "json-server --watch ./fixtures/api.json --port 3000"
+    "mock": "json-server --watch ./fixtures/api.json --port 3000",
+    "server": "upload-test-server start -h 127.0.0.1 -p 1337 -s ./fixtures/uploads -u /uploadHere"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
