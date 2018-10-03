@@ -161,7 +161,31 @@
           "default": "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
         }
       }
+    },
+    {
+      "id": 6,
+      "name": "Video Iframe",
+      "category": "Media",
+      "preview": "https://via.placeholder.com/350x150/fff333?text=Video-Iframe",
+      "template": "<div class='card' style='width: 18rem;'><div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' :src='variables.source' allowfullscreen></iframe></div><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5></div></div>",
+      "variables": {
+        "source": {
+          "label": "Card Video",
+          "category": "content",
+          "type": "file",
+          "control": "FileUploader",
+          "default": "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+        },
+        "title": {
+          "label": "Card Title",
+          "category": "content",
+          "type": "text",
+          "control": "textbox",
+          "default": "Card Title"
+        }
+      }
     }
+
   ],
   "header-block": {
     "name": "bootstrap header block",

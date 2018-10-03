@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.values);
       this.$emit('save', this.values);
     },
     cancel() {
