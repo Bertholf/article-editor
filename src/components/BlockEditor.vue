@@ -29,9 +29,10 @@
 import _ from 'lodash';
 import Textbox from './Fields/Textbox.vue';
 import ColorPicker from './Fields/ColorPicker.vue';
+import FileUploader from './Fields/FileUploader.vue';
 
 export default {
-  components: { Textbox, ColorPicker },
+  components: { Textbox, ColorPicker, FileUploader },
   computed: {
     visibleOptions() {
       return _.pickBy(this.options, { category: this.selectedCategory });
@@ -61,7 +62,6 @@ export default {
       deep: true,
       immediate: true,
       handler(newValue) {
-        console.log(newValue);
         this.values = _.cloneDeep(newValue);
       },
     },
