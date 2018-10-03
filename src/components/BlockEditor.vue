@@ -30,9 +30,10 @@ import _ from 'lodash';
 import Textbox from './Fields/Textbox.vue';
 import ColorPicker from './Fields/ColorPicker.vue';
 import FileUploader from './Fields/FileUploader.vue';
+import wysiwyg from './Fields/vue-wysiwyg.vue';
 
 export default {
-  components: { Textbox, ColorPicker, FileUploader },
+  components: { Textbox, ColorPicker, FileUploader, wysiwyg },
   computed: {
     visibleOptions() {
       return _.pickBy(this.options, { category: this.selectedCategory });
