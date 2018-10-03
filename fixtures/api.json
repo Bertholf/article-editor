@@ -5,7 +5,7 @@
       "name": "jumbotron",
       "category": "alerts",
       "preview": "https://via.placeholder.com/350x150/fff333?text=jumbotron",
-      "template": "<div class='jumbotron' :style='{backgroundColor:variables.bgColor}'><h1 class='display-4'>{{variables.title}}!</h1><p class='lead'>{{variables.lead}}</p><hr class='my-4'><p>{{variables.text}}.</p<a class='btn btn-primary btn-lg' href='#'role='button'>Learn more</a></div>",
+      "template": "<div class='jumbotron' :style='{backgroundColor:variables.bgColor}'><h1 class='display-4'>{{variables.title}}!</h1><p class='lead'>{{variables.lead}}</p><hr class='my-4'><p v-html='variables.text'></p<a class='btn btn-primary btn-lg' href='#'role='button'>Learn more</a></div>",
       "variables": {
         "title": {
           "label": "Jumbotron Title",
@@ -25,7 +25,7 @@
           "label": "Jumbotron Body",
           "category":"content",
           "type": "text",
-          "control": "textbox",
+          "control": "wysiwyg",
           "default": "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
         },
         "bgColor": {
@@ -42,8 +42,15 @@
       "name": "card",
       "category": "content",
       "preview": "https://via.placeholder.com/350x150?text=card",
-      "template": "<div class='card' style='width: 18rem;'><img class='card-img-top' src='https://via.placeholder.com/350x150' alt='Card image cap'><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5><p class='card-text'>{{variables.text}}</p><a :href='variables.btn_link' class='btn btn-primary'>{{variables.btn_text}}</a></div></div>",
+      "template": "<div class='card' style='width: 18rem;'><img class='card-img-top' :src='variables.card_img' alt='Card image cap'><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5><p class='card-text'>{{variables.text}}</p><a :href='variables.btn_link' class='btn btn-primary'>{{variables.btn_text}}</a></div></div>",
       "variables": {
+        "card_img": {
+          "label": "Card Image",
+          "category": "content",
+          "type": "file",
+          "control": "FileUploader",
+          "default": "https://via.placeholder.com/350x150"
+        },
         "title": {
           "label": "Card Title",
           "category": "content",
@@ -154,7 +161,31 @@
           "default": "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
         }
       }
+    },
+    {
+      "id": 6,
+      "name": "Video Iframe",
+      "category": "Media",
+      "preview": "https://via.placeholder.com/350x150/fff333?text=Video-Iframe",
+      "template": "<div class='card' style='width: 18rem;'><div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' :src='variables.source' allowfullscreen></iframe></div><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5></div></div>",
+      "variables": {
+        "source": {
+          "label": "Card Video",
+          "category": "content",
+          "type": "file",
+          "control": "FileUploader",
+          "default": "https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+        },
+        "title": {
+          "label": "Card Title",
+          "category": "content",
+          "type": "text",
+          "control": "textbox",
+          "default": "Card Title"
+        }
+      }
     }
+
   ],
   "header-block": {
     "name": "bootstrap header block",
