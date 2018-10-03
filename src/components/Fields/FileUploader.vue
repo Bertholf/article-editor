@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       dropzoneOptions: {
-        url: 'http://127.0.0.1:1337/uploadHere',
+        url: 'http://127.0.0.1:1337/upload',
         maxFiles: 1,
         thumbnailWidth: 200,
         addRemoveLinks: true,
