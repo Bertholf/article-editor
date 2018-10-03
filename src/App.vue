@@ -8,8 +8,7 @@
                 </button>
             </div>
             <div class="d-inline-block ml-auto">
-                <button class="btn btn-success" @click="exportHtml">Export</button>
-
+                <button class="btn btn-success" @click="exportHtml" :disabled="editing">Export</button>
             </div>
         </div>
         <div class="row no-gutters">
@@ -17,13 +16,14 @@
                 <content-group></content-group>
             </div>
             <div class="vh-100 border bg-light col" @click="showBlocks = false">
-                <page></page>
+                <page ref="page" @editing="e => editing = e"></page>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
 import './styles/app.scss';
 import ContentGroup from './components/ContentGroup.vue';
 import Page from './components/Page.vue';
@@ -37,7 +37,8 @@ export default {
 
   data() {
     return {
-      showBlocks: false,
+      editing: false,
+      showBlocks: true,
     };
   },
 
@@ -46,28 +47,14 @@ export default {
     this.$store.dispatch('getHTMLHeaderBlock');
     this.$store.dispatch('getHTMLFooterBlock');
   },
-
-  computed: {
-    loadedPageBlocks() {
-      return this.$store.state.loadedPage.blocks;
-    },
-  },
-
   methods: {
     toggleBlocks() {
       this.showBlocks = !this.showBlocks;
     },
     exportHtml() {
       let text = this.$store.state.headerBlock.html;
-
-      this.loadedPageBlocks.forEach((block) => {
-        if (block.id !== 0) {
-          text += block.html;
-        }
-      });
-
+      text += this.$refs.page.$el.outerHTML;
       text += this.$store.state.footerBlock.html;
-
 
       const element = document.createElement('a');
       element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);

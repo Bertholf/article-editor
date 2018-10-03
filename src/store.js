@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 import Vue from 'vue';
 import Vuex from 'vuex';
 import _ from 'lodash';
@@ -6,6 +7,7 @@ import api from './client';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     footerBlock: {},
     headerBlock: {},
@@ -44,6 +46,14 @@ export default new Vuex.Store({
     },
     setFilteredBlocks(state, blocks) {
       state.filteredBlocks = blocks;
+    },
+    setBlockVariableValues(state, { index, variables }) {
+      _.each(variables, (value, key) => {
+        _.set(state.loadedPage.blocks[index], `variables.${key}.value`, value);
+      });
+    },
+    setBlockVariableHtml(state, { index, html }) {
+      _.set(state.loadedPage.blocks[index], 'html', html);
     },
   },
   actions: {
