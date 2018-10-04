@@ -31,8 +31,7 @@ export default {
   },
   methods: {
     fileUploaded(file, response) {
-      console.log(response);
-      this.$emit('input', response.files.file);
+      this.$emit('input', `/uploads/${response.filename}`);
     },
   },
 };

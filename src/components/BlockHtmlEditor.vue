@@ -16,9 +16,13 @@
 import { codemirror } from 'vue-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/lucario.css';
+import 'codemirror/addon/lint/lint';
+import 'codemirror/addon/lint/lint.css';
+import 'codemirror/addon/lint/html-lint';
+
+import {HTMLHint} from 'htmlhint';
 
 const beautify = require('js-beautify').html;
-const HTMLHint = require('htmlhint').HTMLHint;
 
 export default {
   data() {
@@ -29,6 +33,7 @@ export default {
         mode: 'text/html',
         smartIndent: true,
         lineNumbers: true,
+        lint: true,
       },
       beautifyOptions: {
         indent_size: 2,
