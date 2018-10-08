@@ -1,20 +1,20 @@
 <template>
     <div>
-        <draggable v-model="loadedBlocks" class="dragArea dropzone" :options="{group:'people'}">
+        <draggable v-model="loadedBlocks" class="dragArea dropzone" :options="{group:'people', disabled: editing}">
             <block-viewer v-for="(block, index) in loadedBlocks" :key="index" :index="index" :block="block"
-                   @editing="e => $emit('editing', e)"></block-viewer>
+                   @editing="e =>{ $emit('editing', e); editing = e}"></block-viewer>
         </draggable>
     </div>
 </template>
 
 <script>
-  import draggable from 'vuedraggable';
-  import blockViewer from './BlockViewer';
+import draggable from 'vuedraggable';
+import blockViewer from './BlockViewer.vue';
 
-  export default {
+export default {
   data() {
     return {
-
+      editing: false,
     };
   },
   components: {
