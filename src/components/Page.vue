@@ -9,6 +9,7 @@
 
 <script>
 import draggable from 'vuedraggable';
+import _ from 'lodash';
 import blockViewer from './BlockViewer.vue';
 
 export default {
@@ -27,8 +28,9 @@ export default {
       get() {
         return this.$store.state.loadedPage.blocks;
       },
-      set(newValue) {
-        this.$store.commit('setLoadedBlocks', newValue);
+      set(blocks) {
+        console.log(blocks);
+        this.$store.commit('setLoadedBlocks', _.cloneDeep(blocks));
       },
     },
   },

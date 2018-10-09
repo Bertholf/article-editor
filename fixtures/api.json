@@ -42,7 +42,7 @@
       "name": "card",
       "category": "content",
       "preview": "https://via.placeholder.com/350x150?text=card",
-      "template": "<div class='card' style='width: 18rem;'><img class='card-img-top' :src='variables.card_img' alt='Card image cap'><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5><p class='card-text'>{{variables.text}}</p><a :href='variables.btn_link' class='btn btn-primary'>{{variables.btn_text}}</a></div></div>",
+      "template": "<div class='card' style='width: 18rem;'><img class='card-img-top' :src='variables.card_img' alt='Card image cap'><div class='card-body'><h5 class='card-title'>{{variables.title}}</h5><p class='card-text' v-html='variables.text'></p><a :href='variables.btn_link' class='btn btn-primary'>{{variables.btn_text}}</a></div></div>",
       "variables": {
         "card_img": {
           "label": "Card Image",
@@ -62,7 +62,7 @@
           "label": "Card Text",
           "category": "content",
           "type": "text",
-          "control": "textbox",
+          "control": "editor",
           "default": "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
         },
         "btn_text": {
@@ -189,10 +189,10 @@
   ],
   "header-block": {
     "name": "bootstrap header block",
-    "template": "<!doctype html><html lang='en'><head><!-- Required meta tags --><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><!-- Bootstrap CSS --><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'><title>Page Builder!</title></head><body><div class='container-fluid'>"
+    "html": "<!doctype html><html lang='en'><head><!-- Required meta tags --><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><!-- Bootstrap CSS --><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'><title>Page Builder!</title></head><body><div class='container-fluid'>"
   },
   "footer-block": {
     "name": "bootstrap footer block",
-    "template": " <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script><script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script></div></body></html>"
+    "html": " <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script><script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous'></script></div></body></html>"
   }
 }
