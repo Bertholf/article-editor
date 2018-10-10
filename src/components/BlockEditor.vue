@@ -33,7 +33,9 @@ import FileUploader from './Fields/FileUploader.vue';
 import Editor from './Fields/Editor.vue';
 
 export default {
-  components: { Textbox, ColorPicker, FileUploader, Editor },
+  components: {
+    Textbox, ColorPicker, FileUploader, Editor,
+  },
   computed: {
     visibleOptions() {
       return _.pickBy(this.options, { category: this.selectedCategory });

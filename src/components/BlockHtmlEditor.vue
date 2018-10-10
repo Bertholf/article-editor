@@ -21,20 +21,20 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+import _ from 'lodash';
 
-  import {codemirror} from 'vue-codemirror';
-  import 'codemirror/lib/codemirror.css';
-  import 'codemirror/theme/lucario.css';
-  import 'codemirror/addon/lint/lint';
-  import 'codemirror/addon/lint/lint.css';
-  import 'codemirror/addon/lint/html-lint';
-  import 'codemirror/addon/fold/foldgutter.css';
-  import 'codemirror/addon/fold/foldgutter';
+import { codemirror } from 'vue-codemirror';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/lucario.css';
+import 'codemirror/addon/lint/lint';
+import 'codemirror/addon/lint/lint.css';
+import 'codemirror/addon/lint/html-lint';
+import 'codemirror/addon/fold/foldgutter.css';
+import 'codemirror/addon/fold/foldgutter';
 
-  import {HTMLHint} from 'htmlhint';
+import { HTMLHint } from 'htmlhint';
 
-  const beautify = require('js-beautify').html;
+const beautify = require('js-beautify').html;
 
 export default {
   data() {
@@ -46,19 +46,19 @@ export default {
         smartIndent: true,
         lineNumbers: true,
         lint: true,
-        tabMode: "indent",
+        tabMode: 'indent',
         styleActiveLine: true,
         lineWrapping: true,
         autoCloseTags: true,
         foldGutter: true,
         dragDrop: true,
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"]
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
       },
       beautifyOptions: {
         indent_size: 2,
       },
       errors: [],
-      lastUpdate: undefined
+      lastUpdate: undefined,
     };
   },
   components: {
@@ -74,20 +74,20 @@ export default {
     cancel() {
       this.$emit('close');
     },
-    validate(){
+    validate() {
       console.log('here');
       this.errors = HTMLHint.verify(this.code, {
-        "tagname-lowercase": true,
-        "attr-lowercase": true,
-        "attr-value-double-quotes": true,
-        "doctype-first": false,
-        "tag-pair": true,
-        "spec-char-escape": true,
-        "id-unique": true,
-        "src-not-empty": true,
-        "attr-no-duplication": true
-      })
-    }
+        'tagname-lowercase': true,
+        'attr-lowercase': true,
+        'attr-value-double-quotes': true,
+        'doctype-first': false,
+        'tag-pair': true,
+        'spec-char-escape': true,
+        'id-unique': true,
+        'src-not-empty': true,
+        'attr-no-duplication': true,
+      });
+    },
   },
   props: {
     value: {},
@@ -99,16 +99,16 @@ export default {
         this.code = beautify(code, this.beautifier);
       },
     },
-    code(){
+    code() {
       this.lastUpdate = Date.now();
-      //wait for a second before validating
-      _.debounce(() =>{
-        //skip if updated less than a second
+      // wait for a second before validating
+      _.debounce(() => {
+        // skip if updated less than a second
         if (Date.now() - this.lastUpdate > 1000) {
           this.validate();
         }
       }, 1200)();
-    }
+    },
   },
 };
 </script>

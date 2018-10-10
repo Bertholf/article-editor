@@ -26,3 +26,9 @@ npm run lint
 ```
 npm run mock
 ```
+
+### Run mock upload server
+
+```
+npm run mock-upload
+```

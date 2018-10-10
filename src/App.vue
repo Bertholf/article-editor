@@ -24,11 +24,11 @@
 
 <script>
 
-  import './styles/app.scss';
-  import ContentGroup from './components/ContentGroup.vue';
-  import Page from './components/Page.vue';
+import './styles/app.scss';
+import ContentGroup from './components/ContentGroup.vue';
+import Page from './components/Page.vue';
 
-  export default {
+export default {
   name: 'app',
   components: {
     ContentGroup,
@@ -53,7 +53,7 @@
     },
     exportHtml() {
       this.$store.commit('setExporting', true);
-      this.$nextTick(() =>{
+      this.$nextTick(() => {
         let text = this.$store.state.headerBlock.html || '';
         text += this.$refs.page.$el.outerHTML;
         text += this.$store.state.footerBlock.html || '';
@@ -71,7 +71,6 @@
 
         this.$store.commit('setExporting', false);
       });
-
     },
   },
 };

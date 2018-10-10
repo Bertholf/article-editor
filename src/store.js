@@ -16,7 +16,7 @@ export default new Vuex.Store({
     loadedPage: {
       blocks: [],
     },
-    exporting: false
+    exporting: false,
   },
   getters: {
     availableCategories: (state) => {
@@ -57,7 +57,7 @@ export default new Vuex.Store({
     setBlockVariableHtml(state, { index, html }) {
       _.set(state.loadedPage.blocks[index], 'html', html);
     },
-    setExporting(state, exporting){
+    setExporting(state, exporting) {
       state.exporting = exporting;
     },
   },
