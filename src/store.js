@@ -16,8 +16,8 @@ export default new Vuex.Store({
     loadedPage: {
       blocks: [],
     },
+    exporting: false
   },
-
   getters: {
     availableCategories: (state) => {
       const categories = _.map(_.uniqBy(state.availableBlocks, 'category'), block => ({
@@ -48,12 +48,17 @@ export default new Vuex.Store({
       state.filteredBlocks = blocks;
     },
     setBlockVariableValues(state, { index, variables }) {
+      console.log(variables);
       _.each(variables, (value, key) => {
+        console.log(index, state.loadedPage.blocks[index].variables);
         _.set(state.loadedPage.blocks[index], `variables.${key}.value`, value);
       });
     },
     setBlockVariableHtml(state, { index, html }) {
       _.set(state.loadedPage.blocks[index], 'html', html);
+    },
+    setExporting(state, exporting){
+      state.exporting = exporting;
     },
   },
   actions: {

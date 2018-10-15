@@ -24,11 +24,11 @@
 
 <script>
 
-import './styles/app.scss';
-import ContentGroup from './components/ContentGroup.vue';
-import Page from './components/Page.vue';
+  import './styles/app.scss';
+  import ContentGroup from './components/ContentGroup.vue';
+  import Page from './components/Page.vue';
 
-export default {
+  export default {
   name: 'app',
   components: {
     ContentGroup,
@@ -52,20 +52,26 @@ export default {
       this.showBlocks = !this.showBlocks;
     },
     exportHtml() {
-      let text = this.$store.state.headerBlock.html;
-      text += this.$refs.page.$el.outerHTML;
-      text += this.$store.state.footerBlock.html;
+      this.$store.commit('setExporting', true);
+      this.$nextTick(() =>{
+        let text = this.$store.state.headerBlock.html || '';
+        text += this.$refs.page.$el.outerHTML;
+        text += this.$store.state.footerBlock.html || '';
 
-      const element = document.createElement('a');
-      element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
-      element.setAttribute('download', 'export.html');
+        const element = document.createElement('a');
+        element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+        element.setAttribute('download', 'export.html');
 
-      element.style.display = 'none';
-      document.body.appendChild(element);
+        element.style.display = 'none';
+        document.body.appendChild(element);
 
-      element.click();
+        element.click();
 
-      document.body.removeChild(element);
+        document.body.removeChild(element);
+
+        this.$store.commit('setExporting', false);
+      });
+
     },
   },
 };
